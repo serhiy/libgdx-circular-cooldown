@@ -1,6 +1,6 @@
 # Examples of the LibGDX circular cooldown implementation
 
-![LibGDX Circular Cooldown Examples](https://github.com/serhiy/libgdx-circular-cooldown/blob/master/circular-cooldown.png)
+![LibGDX Circular Cooldown Examples](https://github.com/serhiy/libgdx-circular-cooldown/blob/master/circular-cooldown.gif)
 
 To run the application make sure you have Gradle plug-in integrated with your Eclipse (sorry I do not provide instructions to other IDEs) and you perform the following steps:
 1. Click on "Run" menu
