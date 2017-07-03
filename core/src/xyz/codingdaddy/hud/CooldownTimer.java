@@ -1,6 +1,5 @@
 package xyz.codingdaddy.hud;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Blending;
 import com.badlogic.gdx.graphics.Pixmap.Format;
@@ -68,7 +67,6 @@ public class CooldownTimer extends Table {
 
 			Pixmap.setBlending(Blending.None);
 			
-			//Pixmap round = new Pixmap(finalCooldownDisplay.getWidth(), finalCooldownDisplay.getHeight(), Pixmap.Format.RGBA8888);
 			for(int yy=0;yy<finalCooldownDisplay.getHeight();yy++)
 		    {
 		        for(int xx=0;xx<finalCooldownDisplay.getWidth();xx++)
