@@ -12,15 +12,16 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /**
- * Allows to create circular cooldowns.
+ * Allows to create ring circular cooldowns.
  * 
  * @author serhiy
  */
-public class CooldownTimer extends Table {
+public class RingCooldownTimer extends Table {
 	
 	private static final float START_ANGLE = 90;
 	
 	private final boolean clockwise;
+	private final int ringWidth;
 	
 	private Table cooldownDisplay;
 	private TextureRegionDrawable cooldownTexture;
@@ -30,8 +31,9 @@ public class CooldownTimer extends Table {
 	/**
 	 * @param clockwise determines the rotation side of the cooldown timer.
 	 */
-	public CooldownTimer(boolean clockwise) {
+	public RingCooldownTimer(boolean clockwise, int ringWidth) {
 		this.clockwise = clockwise;
+		this.ringWidth = ringWidth;
 		
 		cooldownDisplay = new Table();
 		cooldownDisplay.setPosition(0, 0);
@@ -92,6 +94,10 @@ public class CooldownTimer extends Table {
 			}
 			
 			Pixmap.setBlending(Blending.None);
+			
+			display.setColor(0.0f, 0.0f, 0.0f, 0.0f);
+			
+			display.fillCircle((int) (getWidth()/2), (int) (getHeight()/2), (int) (Math.min(getWidth()/2, getHeight()/2)) - ringWidth);
 
 			if (cooldownTexture == null) {
 				cooldownTexture = new TextureRegionDrawable(new TextureRegion(new Texture(display)));
@@ -116,6 +122,6 @@ public class CooldownTimer extends Table {
 	}
 	
 	private int calculateSegments(float angle) {
-		return Math.max(1, (int) (6 * (float) Math.cbrt(Math.abs(angle)) * (Math.abs(angle) / 360.0f)));
+		return Math.max(1, (int) (42 * (float) Math.cbrt(Math.abs(angle)) * (Math.abs(angle) / 360.0f)));
 	}
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import xyz.codingdaddy.hud.CooldownTimer;
+import xyz.codingdaddy.hud.RingCooldownTimer;
 
 /**
  * Circular cooldown example renderer.
@@ -19,6 +20,8 @@ public class CircularCooldownExampleMain extends ApplicationAdapter {
 	private Stage stage;
 	private CooldownTimer cooldownTimerBlue;
 	private CooldownTimer cooldownTimerGray;
+	private RingCooldownTimer ringCooldownTimerYellow;
+	private RingCooldownTimer ringCooldownTimerGreen;
 	
 	private long lastUpdate = 0L;
 	private float remainingPercentage = 1.0f;
@@ -41,6 +44,22 @@ public class CircularCooldownExampleMain extends ApplicationAdapter {
 		cooldownTimerGray.setAlpha(0.25f);
 		
 		stage.addActor(cooldownTimerGray);
+		
+		ringCooldownTimerYellow = new RingCooldownTimer(false, 25);
+		ringCooldownTimerYellow.setSize(100, 100);
+		ringCooldownTimerYellow.setPosition(250, 250);
+		ringCooldownTimerYellow.setColor(Color.YELLOW);
+		ringCooldownTimerYellow.setAlpha(0.75f);
+		
+		stage.addActor(ringCooldownTimerYellow);
+		
+		ringCooldownTimerGreen = new RingCooldownTimer(true, 10);
+		ringCooldownTimerGreen.setSize(100, 100);
+		ringCooldownTimerGreen.setPosition(250, 100);
+		ringCooldownTimerGreen.setColor(Color.GREEN);
+		ringCooldownTimerGreen.setAlpha(0.45f);
+		
+		stage.addActor(ringCooldownTimerGreen);
 	}
 
 	@Override
@@ -51,6 +70,8 @@ public class CircularCooldownExampleMain extends ApplicationAdapter {
 		if (System.currentTimeMillis() - lastUpdate > 25L) {
 			cooldownTimerBlue.update(remainingPercentage);
 			cooldownTimerGray.update(remainingPercentage);
+			ringCooldownTimerYellow.update(remainingPercentage);
+			ringCooldownTimerGreen.update(remainingPercentage);
 			
 			remainingPercentage -= 0.01f;
 			lastUpdate = System.currentTimeMillis();
