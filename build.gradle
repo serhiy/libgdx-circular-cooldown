@@ -16,7 +16,7 @@ allprojects {
     version = '1.0'
     ext {
         appName = "libgdx-circular-cooldown"
-        gdxVersion = '1.9.4'
+        gdxVersion = '1.9.8'
         roboVMVersion = '2.2.0'
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'

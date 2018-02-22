@@ -71,8 +71,6 @@ public class CooldownTimer extends Table {
 		
 		Pixmap display = new Pixmap((int) getWidth(), (int) getHeight(), Format.RGBA8888);
 		
-		Blending blending = Pixmap.getBlending();
-		
 		try {
 			float theta = (2 * MathUtils.PI * (angle / 360.0f)) / segments;
 			float cos = MathUtils.cos(theta);
@@ -91,7 +89,7 @@ public class CooldownTimer extends Table {
 				display.fillTriangle((int) getWidth()/2, (int) getHeight()/2, (int) (getWidth()/2 + pcx), (int) (getHeight()/2 + pcy), (int) (getWidth()/2 + cx), (int) (getHeight()/2 + cy));
 			}
 			
-			Pixmap.setBlending(Blending.None);
+			display.setBlending(Blending.None);
 
 			if (cooldownTexture == null) {
 				cooldownTexture = new TextureRegionDrawable(new TextureRegion(new Texture(display)));
@@ -101,8 +99,6 @@ public class CooldownTimer extends Table {
 
 			return cooldownTexture;
 		} finally {
-			Pixmap.setBlending(blending);
-			
 			display.dispose();
 		}
 	}
